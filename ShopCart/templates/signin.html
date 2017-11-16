@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入頁面</title>
+    {% load static %}
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- FB設定-->
+	<meta property="og:title" content="FB的標題" />
+	<meta property="og:description" content="FB的描述" />
+    <!-- 貼連結時出現客製化的介紹-->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="FB上的網址" />
+	<meta property="og:url" content="FB上的圖片" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!-- 設定給IE相容性更新至最新版本-->
+
+    <link href="{% static 'css/signin_style.css' %}" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+	<link href="{% static 'css/completer.css' %}" rel="stylesheet" type="text/css" />
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet" type="text/css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--依序讀取CSS,JS -->
+</head>
+<body>
+
+    <div class="wrap">
+    	<div class="header">
+    		<div class="box">
+    			<form action="." method="POST" class="form">
+    				{% csrf_token %}
+
+    				<h1>註冊資料</h1>
+    				<table class="login_table">
+    					<tr>
+    						<th><label for="account">帳號&nbsp</label></th>
+    						<td><input type="text" placeholder="請輸入帳號" name="uname" id="account" class="account" min="3" max="12" required="required"></td>
+    					</tr>
+    					<tr>
+    						<th><label for="password">密碼&nbsp</label></th>
+    						<td><input type="password" placeholder="請輸入密碼" name="upassword" id="password" class="password" required="required" min="5" max="12"></td>
+    					<tr>
+    						<th><label for="sex">性別&nbsp</label></th>
+    						<td><input type="radio" name="ugender" id="sex" class="sex" value="M">M<input type="radio" name="ugender" id="sex" class="sex" value="F">F</td>
+    					</tr>
+    					<tr>
+    						<th><label for="e-mail">e-mail&nbsp</label></th>
+    						<td><input type="email" placeholder="輸入email(必填!!)" name="uemail" id="email" class="e-mail"></td>
+    					</tr>
+    					<tr>
+    						<th><label for="birth">生日&nbsp</label></th>
+    						<td><input type="date" name="ubirthday" id="birth" class="birth"></td>
+    					</tr>
+    					<tr>
+    						<th></th>
+    						<td><input type="submit" value="送出資料" id="submit"></td>
+    					</tr>
+    					<tr>
+    						<th></th>
+    						<td></td>
+    					</tr>
+    				</table>
+    			</form>
+                <p class="message" style="display: none;">處理中,這位客倌請稍後</p>
+    		</div>
+    	</div>
+
+    </div>
+</body>
+	<script src="{% static 'js/completer.js' %}"></script>
+	<script src="{% static 'js/signin.js' %}"></script>
+	
+</html>
+
+
+
+
+
+

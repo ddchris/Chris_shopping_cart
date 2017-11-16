@@ -1,0 +1,26 @@
+.content {
+    width: 870px;
+    background: #69E118;
+    float: left;
+    padding: 15px;
+}
+
+.content img {
+	float: left;
+    width: 350px;
+    height: 350px;
+}
+
+h2 {
+	font-size: 30px;
+	margin-top: 45px;
+}
+
+.desc {
+	margin-top: 30px;
+	width: 400px;
+	float: left;
+    color: blueviolet;
+    font-size: 25px;
+
+}

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+    <meta charset="UTF-8">
+    <title>購物商城</title>
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- FB設定-->
+	<meta property="og:title" content="FB的標題" />
+	<meta property="og:description" content="FB的描述" />
+    <!-- 貼連結時出現客製化的介紹-->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="FB上的網址" />
+	<meta property="og:url" content="FB上的圖片" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE-Edge">
+    <!-- 設定給IE相容性更新至最新版本-->
+
+	<link rel="shirtcut icon" href="{% static 'imgs/food.ico' %}">
+    <link href="{% static 'css/base_style.css' %}" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/unslider.css' %}">
+	<link rel="stylesheet" href="{% static 'css/unslider-dots.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/themes/default/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themes/light/light.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themes/dark/dark.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nivo-slider.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link href="{% static 'css/animate.css' %}" rel="stylesheet" type="text/css" />
+
+
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!--依序讀取CSS,JS -->
+
+</head>
+<head></head>
+
+<body>
+    <div class="wrap">
+    	<div class="top_bar">
+    		<h1>阿珍的美食購物商城</h1>
+    		{% if status == "login" %}
+    		<p class="message">{{message}}</p>
+    		<div class="logout">
+    			<a href="/logout/">登出</a>
+    		</div>
+    		{% else %}
+    		<p class="message_login">{{message2}}</p>
+    		<form action="." method="POST" name="login_form">
+                {% csrf_token %}
+	    		<ul>
+	    			<li>
+						<a href="#"><img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo"></a>
+	    			</li>
+	    			<li class="form">
+	    				<label for="user_name">&nbsp帳號:</label>
+	    				<input type="text" name="user_name" size="10px" placeholder="請輸入帳號" id="user_name">
+	    			</li>
+	    			<li class="form">
+	    				<label for="password">&nbsp密碼: </label>
+	    				<input type="password" name="password" size="10px" placeholder="請輸入密碼" id="password">
+	    			</li>
+	    			<li>
+	    				<input type="submit" value="登入">
+	    			</li>
+	    			<li class="form signin">
+	    				<a href="/signin">
+	    					註冊
+	    				</a>
+	    			</li>
+	    		</ul>
+    		</form>
+			{% endif %}
+    	</div>
+        <div class="header">
+        <div class="slider-wrapper theme-default">
+	        <div id="slider" class="nivoSlider">
+	            <img src="../static/imgs/bg4.jpg" />
+	            <img src="../static/imgs/bg5.jpg" />
+	            <img src="../static/imgs/bg6.jpg" />
+	            <img src="../static/imgs/bg5.jpg" />
+	        </div>
+        </div>
+        </div>
+        <div class="main">
+            <div class="menu">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio doloremque vel ipsam est molestiae eligendi iure quia distinctio quod praesentium cumque amet quasi, consequuntur, perferendis in sed omnis illum accusamus.dolore mque vel ipsam est molestiaevel ipsam est molestiae vel ipsam est moles tiae
+            </div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div class="clearfix"></div>
+        <div class="footer"></div>
+    </div>
+</body>
+	<script src="{% static 'js/base.js' %}"></script>
+
+	<script type="text/javascript" src="{% static 'js/jquery.nivo.slider.js' %}" > </script>
+	 <script type="text/javascript">
+	    $(window).load(function() {
+	        $('#slider').nivoSlider();
+	    });
+	 </script>
+</html>
+

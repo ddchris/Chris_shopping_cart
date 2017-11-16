@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<link href="{% static 'css/index_style.css' %}" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
+
+
+
+<div class="content">
+    <div class="productList">
+        <ul>
+            {% for food in foods%}
+            {% if food.ponsale == True %}
+			<a href="/detail/{{food.id}}" class="product_link">
+	            <li class="food{{food.id}}">
+	                <div class="status">
+	                    特價中!
+	                </div>
+	                    <img src="/static/imgs/{{food.pimgs}}" />
+	                <div class="product_name">{{food.pname}}</div>
+	                <span>${{food.pprice}}</span>
+	            </li>
+            </a>
+
+            {% elif food.pnewproduct == True %}
+
+			<a href="/detail/{{food.id}}" class="product_link">
+	            <li class="food{{food.id}}">
+	                <div class="status">
+	                    新登場!
+	                </div>
+	                    <img src="/static/imgs/{{food.pimgs}}" />
+	                <div class="product_name">{{food.pname}}</div>
+	                <span>${{food.pprice}}</span>
+	            </li>
+            </a>
+
+            {% else %}
+
+            <a href="/detail/{{food.id}}" class="product_link ">
+	            <li class="food{{food.id}}">
+	                <img src="/static/imgs/{{food.pimgs}}" />
+	                <div class="product_name">{{food.pname}}</div>
+	                <span>${{food.pprice}}</span>
+	            </li>
+            </a>
+            {% endif %}
+            {% empty %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script src="{% static 'js/index.js' %}"></script>
+<script>
+	$(".product_link").mouseenter(function() {
+    $('.food{{food.id}}').addClass('animated infinite shake');
+});
+
+</script>
+{% endblock content %}

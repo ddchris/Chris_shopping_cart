@@ -1,0 +1,157 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body{
+	font-family: setofont;
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.wrap {
+    width: 2530px;
+    margin: 0 auto;
+}
+
+.header{
+	position: relative;
+
+	height: 1836px;
+	background-image:url(../imgs/signin_bg.jpg);
+	background-repeat: no-repeat;
+
+}
+
+.box{
+	position: absolute;
+	left: 850px;
+	top: 250px;
+	width: 620px;
+	height: 900px;
+	border: 2px solid black;
+	border-radius: 5px;
+
+	background: rgba(255,250,255,0.6);
+}
+
+.box h1{
+	margin-top: 20px;
+	text-align: center;
+
+	font-size: 50px;
+	font-weight: bold;
+
+}
+
+.login_table{
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+
+	margin-top: 70px;
+	margin-left: 40px;
+	font-size: 35px;
+
+}
+
+.login_table tr{
+    border-bottom: 30px solid rgba(47,172,30,0);
+
+}
+
+.login_table input{
+	height: 40px;
+	width: 400px;
+	background: rgba(150,150,150,0.3);
+	line-height: 50px;
+	font-size: 40px;
+	border-radius: 10px;
+
+
+}
+
+.login_table .sex{
+	height: 30px;
+	width: 30px;
+
+}
+
+.login_table input:focus{
+    background: rgba(154,225,40,0.5);
+    box-shadow: 3px 3px 11px #484444;
+}
+
+.login_table input[type=submit] {
+	padding:5px 15px;
+	margin-top: 20px;
+	height: 60px;
+	width: 250px;
+
+	font-size: 35px;
+
+    cursor:pointer;
+    background: -webkit-linear-gradient(rgba(35,55,224,0.4),rgba(19,230,223,0.4),rgba(13,241,72,0.4));
+    background: -o-linear-gradient(rgba(35,55,224,0.4),rgba(19,230,223,0.4),rgba(13,241,72,0.4));
+    background: linear-gradient(rgba(35,55,224,0.4),rgba(19,230,223,0.4),rgba(13,241,72,0.4));
+
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #545454;
+}
+
+.login_table input[type=submit] hover:{
+	background: #EA0F0B;
+}
+
+.message{
+    font-size: 40px;
+    font-weight:bold;
+    text-align: center;
+    color:red;
+}
+

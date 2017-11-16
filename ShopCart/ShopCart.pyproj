@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a696fe6a-7e0f-4e57-b5e8-f5aace7c1fe5}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <InterpreterId />
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="manage.py" />
+    <Compile Include="myapp\admin.py" />
+    <Compile Include="myapp\apps.py" />
+    <Compile Include="myapp\migrations\__init__.py" />
+    <Compile Include="myapp\models.py" />
+    <Compile Include="myapp\tests.py" />
+    <Compile Include="myapp\views.py" />
+    <Compile Include="myapp\__init__.py" />
+    <Compile Include="ShopCart\settings.py" />
+    <Compile Include="ShopCart\urls.py" />
+    <Compile Include="ShopCart\wsgi.py" />
+    <Compile Include="ShopCart\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="myapp" />
+    <Folder Include="myapp\migrations" />
+    <Folder Include="ShopCart" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+</Project>
