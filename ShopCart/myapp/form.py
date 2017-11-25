@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django import forms
 
 class UserModel (forms.Form):
@@ -10,3 +12,4 @@ class UserModel (forms.Form):
     uemail = forms.EmailField (required = True)
     ubirthday = forms.DateField (required = False) 
 
+ 

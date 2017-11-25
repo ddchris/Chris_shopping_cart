@@ -14,18 +14,19 @@
   line-height: normal;
 
   position: absolute;
+  top: 42%;
 
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-
   list-style: none;
 
   border: 1px solid #ccc;
   border-bottom-color: #39f;
   background-color: #fff;
+  z-index: 9999 !important;
 }
 
 .completer-container li {
@@ -40,7 +41,8 @@
 
   border-bottom: 1px solid #eee;
   background-color: #fff;
-}
+  z-index: 9999 !important;
+} 
 
 .completer-container .completer-selected,
 .completer-container li:hover {
@@ -48,4 +50,5 @@
 
   border-left: 1px solid #39f;
   background-color: #eee;
+  z-index: 9999 !important;
 }

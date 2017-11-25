@@ -1,14 +1,14 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from django.db import IntegrityError 
 from email.mime.text import MIMEText
 from smtplib import SMTP, SMTPAuthenticationError, SMTPException
-from myapp import models
+from myapp import views
+from myapp import models 
 from myapp import form 
-import json
-from time import sleep
-
-g_status=''
+g_status='' 
 
 def send_mail(uname,uemail):
     strSmtp = "smtp.gmail.com:587"  #主機	            
@@ -43,12 +43,14 @@ def index(request):
     foods = models.ProductModel.objects.all()
 
     if request.method == 'POST':
-        user_name = request.POST['user_name']
+        login_account = request.POST['login_account']
         try:
-            user = models.UserModel.objects.get(uname = user_name)
-            if request.POST['password'] == user.upassword:
-                request.session['username'] =  user_name  # 'username' 為session 自訂key名稱
-                request.session.set_expiry(3600)  # 設定 session 持續 3600 sec
+            user = models.UserModel.objects.get(user_account = login_account)
+            if request.POST['login_password'] == user.user_password:
+                # 確認密碼
+                request.session['login_user'] =  login_account  
+                # 'login_user' 為 session 自訂 key 名稱
+                request.session.set_expiry(7200)  # 設定 session 持續 7200 sec
                 message = '歡迎光臨! ' + str(user.uname) + '~ Hooray!'
                 g_status = 'login'
                 status = g_status
@@ -101,15 +103,46 @@ def signin(request):
     # 此處不可加 else,因網頁必須無條件返回 http　物件
     return render(request,'signin.html',locals())
 
+def account_ckeck(request):
+    status = ''
+    if request.method == 'GET' and request.is_ajax():
+        current_account = request.GET.get('current_account')
 
+        status = 'ok'        
+        for char in current_account:
+            # 限制帳號長度
+            if len(current_account) > 12 or len(current_account) < 5:
+                status = 'illegal'
+                return HttpResponse(status)     
+            # 限制字母或數字
+            elif  65 <= ord(char) <= 122 or 48 <= ord(char) <= 57 :
+                pass
+            else:
+                status = 'illegal'
+                return HttpResponse(status)
 
-def logout(request):
-    if  request.session :
-        del request.session
-    global g_status
-    g_status = ''
-    return redirect ('/index/')
+        # 驗證帳號是否重複
+        users = models.UserModel.objects.all()
+        # objects.all() 格式為大物件包含小物件
+        for user in users:
+            if user.user_account == current_account:  # 以.存取物件屬性
+                status = 'duplicate'
+                return HttpResponse(status)
+            else:
+                pass
+    return HttpResponse(status)
 
+def email_check(request):
+    if request.method == 'GET' and request.is_ajax():
+        import re
+        current_email = request.GET.get('current_email')
+        status = 'ok'
+        if re.match(r'^[A-Za-z0-9\.\+_-]+@[A-Za-z0-9\._-]+\.[a-zA-Z]*$', current_email ):
+                return HttpResponse(status)
+        else:
+            status = 'not_ok'
+            return HttpResponse(status)
+    return HttpResponse(status)
 
 
  

@@ -356,7 +356,7 @@
     separator: '',
     suggest: false,
     template: '<ul class="completer-container"></ul>',
-    zIndex: 1,
+    zIndex: 100,
     complete: $.noop,
     filter: function (val) {
       return val;

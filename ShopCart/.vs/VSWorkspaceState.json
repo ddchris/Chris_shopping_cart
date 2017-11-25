@@ -5,8 +5,9 @@
     "\\ShopCart",
     "\\static",
     "\\static\\css",
+    "\\static\\js",
     "\\templates"
   ],
-  "SelectedNode": "\\myapp\\views.py",
+  "SelectedNode": "\\static\\js\\completer.js",
   "PreviewInSolutionExplorer": false
 }

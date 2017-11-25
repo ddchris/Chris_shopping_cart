@@ -1,0 +1,481 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body{
+	font-family: setofont;
+	font-family: 'Noto Sans', sans-serif;
+	z-index: 1;
+}
+
+.wrap {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* loginbox window start */
+#signinBox {
+    display: none;
+    position: fixed;
+    cursor: default;
+    transform: translate(0)!important;
+    left: 48%;
+    top: 40%;
+    margin-left: -150px;
+    margin-top: -200px;
+    z-index: 10;
+    width: 500px;
+    min-width: 400px;
+    background: rgba(225,220,225,0.9);
+    border: 1px solid #AFAFAF;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #484747;
+}
+
+#signinBox .signinBox-close{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	height: 30px;
+	width: 30px;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: center;
+
+}
+
+#loginbox {
+    display: none;
+    position: fixed;
+    cursor: default;
+    transform: translate(0)!important;
+    left: 48%;
+    top: 40%;
+    margin-left: -150px;
+    margin-top: -200px;
+    z-index: 10;
+    width: 500px;
+    min-width: 400px;
+    background: rgba(225,220,225,0.9);
+    border: 1px solid #AFAFAF;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #484747;
+}
+
+#loginbox .loginbox-close{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	height: 30px;
+	width: 30px;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: center;
+
+}
+
+#loginbox .loginbox_header, #signinBox .signinBox_header {
+    margin-top: 40px;
+    margin-left: 40px;
+    margin-bottom: 23px;
+    font-size: 30px;
+}
+
+.fb_login a {
+    display: block;
+    margin-left: 29px;
+    margin-bottom: 10px;
+    padding: 23px;
+    text-align: center;
+    width: 80%;
+    color: #FFFFFF;
+    text-decoration: none;
+    background: rgba(62,91,150,0.7);
+    border: 1px solid #160B8B;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.fb_login a:hover{
+    background: rgba(87,115,177,0.6);
+}
+
+.google_login a{
+	display: block;
+    margin-left: 28px;
+    margin-bottom: 10px;
+    padding: 23px;
+    text-align: center;
+    width: 80%;
+	color: #FFFFFF;
+	text-decoration: none;
+
+    background: rgba(110,100,100,0.7);
+	border: 1px solid #160B8B;
+	border-radius: 3px;
+	cursor: pointer;
+
+}
+
+.google_login a:hover{
+   background: rgba(135,130,130,0.6);
+}
+
+.fb_login img, .google_login img {
+    float: left;
+    width: 35px;
+    height: 35px;
+}
+
+.seperate_line {
+    margin-left: 35px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.login_form span{
+	margin-left: 1em;
+}
+
+#signinbox_account,#signinbox_email, #password, #check_password, #loginbox_account, #check_password, #login_password{
+    float: right:;
+    font-size: 25px;
+    margin-bottom: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 50%;
+    text-decoration: none;
+
+    background: rgba(250,170,2,0.5);
+    border: 1px solid #828282;
+    border-radius: 3px;
+}
+
+#signinbox_account:hover, #signinbox_email:hover, 
+#password:hover, #loginbox_account:hover, 
+#check_password:hover{
+    background: rgba(250,170,2,0.2);
+}
+
+#signinbox_account:focus, #signinbox_email:focus, 
+#password:focus, #loginbox_account:focus, #check_password:focus{
+    background:  rgba(250,170,2,0.2);
+}
+
+#loginbox_submit {
+    display: block;
+    margin-top: 15px;
+    margin-left: 17px;
+    margin-bottom: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 92%;
+    color: #FFFFFF;
+    text-decoration: none;
+    background: rgba(220,31,31,0.7);
+    border: 1px solid #160B8B;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+#loginbox_submit:hover {
+    background: rgba(240,51,51,0.6);
+
+}
+
+/* loginbox window end */
+
+.top_bar {
+    margin-bottom: 2px;
+    font-weight: bold;
+    border-radius: 10px;
+    background: #0D0C0C;
+    padding: 10px;
+    overflow: auto;
+}
+.top_bar h1 {
+    float: left;
+    margin-top: 0.6em;
+    margin-left: 0.9em;
+    color: #40f707;
+    font-size: 35px;
+}
+
+.top_bar ul {
+    float: right;
+    margin-right: 20px;
+}
+
+.top_bar li{
+	float: left;
+	display: inline;
+}
+
+/* Before login start */
+
+.top_bar #original_cartlogo {
+    float: right;
+    margin-right: 1.2em;
+    margin-top: 0.1em;
+    width: 70px;
+    cursor: pointer;
+}
+
+.top_bar #login_submit {
+    float: right;
+    margin-right: 13px;   
+    padding: 7.5px;
+    font-size: 35px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    background: -webkit-linear-gradient(#348E0C, #FFFFFF);
+    background: linear-gradient(#3CF902, #FFFFFF);
+    cursor: pointer;
+}
+
+.top_bar #signin {
+    float: right;
+    margin-right: 13px;
+    padding: 7.5px;
+    font-size: 35px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    background: -webkit-linear-gradient(#FC9F02, #FFFFFF);
+    background: linear-gradient(#FC9F02, #FFFFFF);
+    cursor: pointer;
+}
+
+#login_submit:hover{
+    background: #64ED15;
+}
+
+#signin:hover{
+    background: #FC8D04;
+}
+
+/* Before login end */
+
+/* After login start */
+
+.top_bar #after_cartlogo {
+    width: 70px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 0.1em;
+    cursor: pointer;
+}
+
+#logout {
+    float: right;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 25px;
+    margin-right: 15px;
+    margin-top: 6px;
+    cursor: pointer;
+    background: #edc1c1c7;
+}
+
+#social_img {
+    border-radius: 0%;
+    width: 70px;
+    float: right;
+    margin-right: 20px;
+}
+
+.top_bar span {
+    color: #FF9800;
+    float: right;
+    margin-top: 25px;
+    margin-right: 35px;
+}
+
+/* After login end */
+
+.header {
+	margin-bottom: 0.5em;
+    border-radius: 10px;
+    width: 1200px;
+}
+
+#slider img{
+	border-radius: 10px;
+}
+
+.menu {
+    float: left;
+    margin-right: 5px;
+    padding: 17px;
+    width: 260px;
+    background: #fba708;
+    border-radius: 10px;
+    color: white;
+    font-size: 40px;
+}
+
+.menu h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #110e0e;
+}
+
+.menu li {
+    margin-top: 14px;
+    margin-left: 8px;
+    margin-bottom: 12px;
+    border: 5px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    background: #20311f85;
+}
+
+.menu li:hover{
+    background: #3BA827;
+    cursor: pointer;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.footer {
+    height: 60px;
+    background: -webkit-linear-gradient(#8347C8, #F5F1F1);
+    background: -o-linear-gradient(#8347C8, #F5F1F1);
+    background: linear-gradient(#8347C8, #F5F1F1);
+    margin-top: 5px;
+}
+
+/*_________ Account, Email check_________  */
+
+.account_ok_img, .account_not_ok_img, .email_ok_img, .email_not_ok_img, .password_ok_img, .password_not_ok_img{
+	height: 25px;
+	width: 25px;
+}
+
+#account_illegal, #account_duplicate, #email_illegal, #password_not_ok{
+    color: red;
+}
+
+#account_ok, #email_ok, #password_ok{
+    color: green;
+}
+
+.account_ok_img, .account_not_ok_img {
+    display: none;
+    position: absolute;
+    left: 79%;
+    top: 20%;
+}
+
+#account_ok, #account_illegal, #account_duplicate {
+    display: none;
+    position: absolute;
+    left: 85%;
+    top: 21%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.email_ok_img, .email_not_ok_img {
+    display: none;
+    position: absolute;
+    left: 79%;
+    top: 35.5%;
+}
+
+#email_ok, #email_illegal {
+    display: none;
+    position: absolute;
+    left: 85%;
+    top: 36.5%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.password_ok_img, .password_not_ok_img {
+    display: none;
+    position: absolute;
+    left: 78.5%;
+    top: 64%;
+}
+
+#password_ok, #password_not_ok {
+    display: none;
+    position: absolute;
+    left: 85%;
+    top: 65%;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.gender{
+	height: 30px;
+	width: 30px;
+	margin-left: 5px;
+	background: #EEFE05;
+	cursor: pointer;
+}
+
+#gender {
+    padding-top: 8px;
+    background: rgba(132,251,11,0.5)
+}
+
+#gender b {
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}

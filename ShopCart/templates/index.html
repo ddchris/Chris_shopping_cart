@@ -6,44 +6,42 @@
 <!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
 
-
-
 <div class="content">
     <div class="productList">
         <ul>
             {% for food in foods%}
-            {% if food.ponsale == True %}
-			<a href="/detail/{{food.id}}" class="product_link">
+            {% if food.p_onsale == True %}
+			<a href="#" class="product_link">
 	            <li class="food{{food.id}}">
 	                <div class="status">
 	                    特價中!
 	                </div>
-	                    <img src="/static/imgs/{{food.pimgs}}" />
-	                <div class="product_name">{{food.pname}}</div>
-	                <span>${{food.pprice}}</span>
+	                    <img src="/static/imgs/{{food.p_imgs}}" />
+	                <div class="product_name"> {{food.p_name}} </div>
+	                <span> ${{food.p_price}} </span>
 	            </li>
             </a>
 
-            {% elif food.pnewproduct == True %}
+            {% elif food.p_newproduct == True %}
 
-			<a href="/detail/{{food.id}}" class="product_link">
+			<a href="#" class="product_link">
 	            <li class="food{{food.id}}">
 	                <div class="status">
 	                    新登場!
 	                </div>
-	                    <img src="/static/imgs/{{food.pimgs}}" />
-	                <div class="product_name">{{food.pname}}</div>
-	                <span>${{food.pprice}}</span>
+	                    <img src="/static/imgs/{{food.p_imgs}}" />
+	                <div class="product_name">{{food.p_name}}</div>
+	                <span>${{food.p_price}}</span>
 	            </li>
             </a>
 
             {% else %}
 
-            <a href="/detail/{{food.id}}" class="product_link ">
+            <a href="#" class="product_link ">
 	            <li class="food{{food.id}}">
-	                <img src="/static/imgs/{{food.pimgs}}" />
-	                <div class="product_name">{{food.pname}}</div>
-	                <span>${{food.pprice}}</span>
+	                <img src="/static/imgs/{{food.p_imgs}}" />
+	                <div class="product_name">{{food.p_name}}</div>
+	                <span>${{food.p_price}}</span>
 	            </li>
             </a>
             {% endif %}

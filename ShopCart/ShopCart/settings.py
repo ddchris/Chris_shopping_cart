@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for ShopCart project.
 
@@ -43,19 +44,16 @@ INSTALLED_APPS = [
     'myapp',
     'django.contrib.sites',
     'allauth',
-    'allauth.account',
+    'allauth.account', 
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.google',
 ]
 
 
-SITE_ID = 1
+SITE_ID = 2
 LOGIN_REDIRECT_URL = '/'
-#EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
-#MAILGUN_ACCESS_KEY = ''
-#MAILGUN_SERVER_NAME = ''
+
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -143,4 +141,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]  # 加入static 路徑
 
-ACCOUNT_ACTIVATION_DAY = 7
+
+#PROJECT_ROOT = os.path.dirname(os.path.abspath(_file_))
+
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+#STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+#STATICFILES_DIRS = (
+#    os.path.join(PROJECT_ROOT, 'static'),
+#)
+

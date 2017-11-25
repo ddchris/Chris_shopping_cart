@@ -1,13 +1,10 @@
 .content {
     width: 870px;
-    background: -webkit-linear-gradient(left, #20CC1F, #FFFFFF);
-    background: -o-linear-gradient(left, #20CC1F, #FFFFFF);
-    background: linear-gradient(to right, #20CC1F, #FFFFFF);
+    background: rgba(5,5,5,0.95);
     border-radius: 10px;
-
     float: left;
     padding: 15px;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .productList .status {
@@ -25,43 +22,43 @@
 
 
 .productList li {
-   
     position: relative;
     float: left;
     margin-left: 5px;
     margin-right: 5px;
     margin-bottom: 10px;
     padding-left: 10px;
-
-    width: 122px;
-    height: 200px;
+    width: 195.5px;
+    height: 270px;
     border: 1px solid black;
     border-radius: 10px;
-    background-color:#77E2D8 ;
+    background-color: rgba(120,120,150,0.9);
     box-shadow: 5px 5px 15px #3F3D3D;
-
-
 }
 
 .productList li:hover{
-    background: rgba(198,221,150,1);
+    background: rgba(190,230,250,0.7);
 
 
 }
 
 .productList li img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin-top: 30px;
+    margin-left: 18px;
 }
 
-.produc_name{
-    margin-bottom: 15px;
-}
-
-.productList li span {
-    color: #520CD4;
+.product_name {
+    color: #E8E7E7;
+    width: 100%;
+    text-align: center;
     margin-bottom: 5px;
 }
 
-
+.productList li span {
+    display: block;
+    color: #E8E7E7;
+    width: 100%;
+    margin-left: 34%;
+}
