@@ -45,7 +45,7 @@
         	<a href="#" class="signinBox-close"> × </a>
 			<div class="signinBox_header"> 加入美食商城會員！</div>
 
-    		<form action="." method="POST" name="signin_form">
+    		<form action="/signin/" method="POST" name="signin_form">
                 {% csrf_token %}
                 <div>
 					<label for="signin_account"><span>&nbsp&nbsp帳號:</span></label>
@@ -88,10 +88,10 @@
 						<span id="password_not_ok">輸入不一致</span>
 					</div>
                 </div>
-                    <label for="ugender"><span>&nbsp&nbsp性別:</span></label>
+                    <label for="user_gender"><span>&nbsp&nbsp性別:</span></label>
                 <span id="gender">
-	                <input type="radio" name="ugender" class="gender" value="M"><b>Male</b>
-	                <input type="radio" name="ugender" class="gender" value="F"><b>Female</b>
+	                <input type="radio" name="user_gender" class="gender" value="M"><b>Male</b>
+	                <input type="radio" name="user_gender" class="gender" value="F"><b>Female</b>
                 </span>
 				<input type="submit" value="送出資料!" id="loginbox_submit">
     		</form>
@@ -131,7 +131,7 @@
 			<div class="top_bar">
     		<h1 class="animated infinite pulse">Chris2012's 美食購物商城</h1>
 
-    		{% if user.is_authenticated or status == "login" %}
+    		{% if user.is_authenticated %}
 		    <span>{{user.socialaccount_set.all.0.extra_data.name}} 您好~ </span>
     		<img src="{{user.socialaccount_set.all.0.get_avatar_url}}" alt="" id="social_img">
 			<form method="POST" action="{% url 'account_logout' %}">
@@ -143,6 +143,11 @@
 			</form>
 			<img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo" id="after_cartlogo">
 
+			{% elif status == "login" %}
+			<a href="/logout/">
+				<button type="submit" id="logout">登出</button>
+			</a>
+			<img src="{% static 'imgs/cart_logo2.png' %}">
         	{% else %}
 
 			<img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo" id="original_cartlogo">
@@ -177,7 +182,10 @@
 	            {% endblock content %}
 	        </div>
 	        <div class="clearfix"></div>
-	        <div class="footer"></div>
+	        <div class="footer">
+	        	<h2>{{message}}</h2>
+	        	<h2>{{message2}}</h2>
+	        </div>
    		</div>
 </body>
 

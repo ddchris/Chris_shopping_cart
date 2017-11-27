@@ -37,7 +37,7 @@ def send_mail(uname,uemail):
 
 def index(request):
     global g_status 
-    status = g_status    
+    status = ''   
     message = ''
     message2 = '您好 請先登入'
     foods = models.ProductModel.objects.all()
@@ -49,18 +49,27 @@ def index(request):
             if request.POST['login_password'] == user.user_password:
                 # 確認密碼
                 request.session['login_user'] =  login_account  
-                # 'login_user' 為 session 自訂 key 名稱
-                request.session.set_expiry(7200)  # 設定 session 持續 7200 sec
-                message = '歡迎光臨! ' + str(user.uname) + '~ Hooray!'
+                # 為使用者儲存自訂(key)名稱為 'login_user' 之 Session
+                request.session.set_expiry(7200)  
+                # 設定 session 持續 7200 sec
+                message = '歡迎光臨! ' + str(user.user_account) + '~ Hooray!'
                 g_status = 'login'
                 status = g_status
                 return render(request,'index.html',locals())
 
             else:
                 message2 = '密碼錯誤 請重新輸入!'
-        except:
-            message = '請先註冊'
+        except ArithmeticError:
+            message = '發生問題請先註冊'
     return render(request,'index.html',locals())
+
+
+def logout(request):
+    if  request.session :
+        del request.session
+    global g_status
+    g_status = ''
+    return redirect ('/index/')
 
 
 
@@ -76,23 +85,20 @@ def signin(request):
            user_form = form.UserModel(request.POST)  # 以 request.POST 取得資料並建立表單
            if user_form.is_valid():      # 如果驗證通過 
 
-               uname = user_form.cleaned_data['uname'] # 以 form_name.cleaned_data[' '] 收集資料
-               upassword = user_form.cleaned_data['upassword']
-               ugender = user_form.cleaned_data['ugender']
-               uemail = user_form.cleaned_data['uemail']
-               ubirthday = user_form.cleaned_data['ubirthday']
+               signin_account = user_form.cleaned_data['signin_account'] # 以 form_name.cleaned_data[' '] 收集資料
+               signin_email = user_form.cleaned_data['signin_email']
+               check_password = user_form.cleaned_data['check_password']
+               user_gender = user_form.cleaned_data['user_gender']
            
                # 建立一筆新資料
-               new_record = models.UserModel.objects.create(uname = uname, upassword = upassword, ugender = ugender, uemail = uemail, ubirthday = ubirthday )
+               new_record = models.UserModel.objects.create(user_account = signin_account, user_password = check_password, user_email = signin_email, user_gender = user_gender )
 
                # 將新資料存入資料庫
                new_record.save()
                
                # to do by JS  message = '註冊中...完成後將自動返回首頁！'
 
-               send_mail(uname,uemail) # 寄認證信
-
-               sleep(3)
+               send_mail(signin_account,signin_email) # 寄認證信
                return redirect ('/index/') #　驗證成功後返回首頁
 
            else:
@@ -101,7 +107,7 @@ def signin(request):
             message = '帳號與他人重複 請重新輸入！'
     
     # 此處不可加 else,因網頁必須無條件返回 http　物件
-    return render(request,'signin.html',locals())
+    return render(request,'index.html',locals())
 
 def account_ckeck(request):
     status = ''

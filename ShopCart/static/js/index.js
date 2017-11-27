@@ -2,7 +2,9 @@ $(document).ready(function() {
 
 //_____________Product-effect______________
 
-	for (var i = 1; i < 30; i++) {
+	var food_number = 30;
+
+	for (var i = 1; i < food_number; i++) {
 		$('.food'+ i).mouseenter(function(event) {
 			/* Act on the event */
 			$(this).addClass('animated infinite pulse');
