@@ -74,7 +74,7 @@ body{
     box-shadow: 5px 5px 10px #484747;
 }
 
-#signinBox .signinBox-close{
+#signinBox_close{
 	position: absolute;
 	top: 15px;
 	right: 15px;
@@ -107,7 +107,7 @@ body{
     box-shadow: 5px 5px 10px #484747;
 }
 
-#loginbox .loginbox-close{
+#loginbox_close{
 	position: absolute;
 	top: 15px;
 	right: 15px;
@@ -185,7 +185,7 @@ body{
 	margin-left: 1em;
 }
 
-#signinbox_account,#signinbox_email, #password, #check_password, #loginbox_account, #check_password, #login_password{
+#signinbox_account,#signinbox_email, #signin_password, #check_password, #loginbox_account, #check_password, #login_password{
     float: right:;
     font-size: 25px;
     margin-bottom: 8px;
@@ -200,17 +200,17 @@ body{
 }
 
 #signinbox_account:hover, #signinbox_email:hover, 
-#password:hover, #loginbox_account:hover, 
+#signin_password:hover, #loginbox_account:hover, 
 #check_password:hover{
     background: rgba(250,170,2,0.2);
 }
 
 #signinbox_account:focus, #signinbox_email:focus, 
-#password:focus, #loginbox_account:focus, #check_password:focus{
+#signin_password:focus, #loginbox_account:focus, #check_password:focus{
     background:  rgba(250,170,2,0.2);
 }
 
-#loginbox_submit {
+#loginbox_submit, #signinbox_submit {
     display: block;
     margin-top: 15px;
     margin-left: 17px;
@@ -227,7 +227,7 @@ body{
     font-size: 25px;
 }
 
-#loginbox_submit:hover {
+#loginbox_submit:hover, #signinbox_submit:hover {
     background: rgba(240,51,51,0.6);
 
 }
@@ -262,6 +262,10 @@ body{
 
 /* Before login start */
 
+#cart_frame{
+	position: relative;
+}
+
 .top_bar #original_cartlogo {
     float: right;
     margin-right: 1.2em;
@@ -270,7 +274,68 @@ body{
     cursor: pointer;
 }
 
-.top_bar #login_submit {
+#quantity_login {
+    background-color: #ec5252;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    left: auto;
+    line-height: 1.43;
+    min-width: 19px;
+    padding: 2px 6px;
+    position: absolute;
+    right: 60%;
+    text-align: center;
+    text-shadow: none;
+    top: -40px;
+    vertical-align: text-top;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+#quantity_social_login {
+    background-color: #ec5252;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    left: auto;
+    line-height: 1.43;
+    min-width: 19px;
+    padding: 2px 6px;
+    position: absolute;
+    right: 70%;
+    text-align: center;
+    text-shadow: none;
+    top: -40px;
+    vertical-align: text-top;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+#quantity_be4_login {
+    background-color: #ec5252;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    left: auto;
+    line-height: 1.43;
+    min-width: 19px;
+    padding: 2px 6px;
+    position: absolute;
+    right: -1%;
+    text-align: center;
+    text-shadow: none;
+    top: -31px;
+    vertical-align: text-top;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+
+#loginbox_open {
     float: right;
     margin-right: 13px;   
     padding: 7.5px;
@@ -282,7 +347,7 @@ body{
     cursor: pointer;
 }
 
-.top_bar #signin {
+#signinbox_open {
     float: right;
     margin-right: 13px;
     padding: 7.5px;
@@ -294,15 +359,22 @@ body{
     cursor: pointer;
 }
 
-#login_submit:hover{
+#loginbox_open:hover{
     background: #64ED15;
 }
 
-#signin:hover{
+#signinbox_open:hover{
     background: #FC8D04;
 }
 
 /* Before login end */
+
+#login_cartlogo{
+    float: right;
+    width: 80px;
+    margin-right: 10px;
+}
+
 
 /* After login start */
 
@@ -323,6 +395,7 @@ body{
     margin-top: 6px;
     cursor: pointer;
     background: #edc1c1c7;
+    position: relative;
 }
 
 #social_img {
@@ -366,6 +439,7 @@ body{
     text-align: center;
     font-weight: bold;
     color: #110e0e;
+    margin-top: 10px;
 }
 
 .menu li {
@@ -376,12 +450,22 @@ body{
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    background: #20311f85;
+    background: #604d4d;
 }
 
 .menu li:hover{
     background: #3BA827;
     cursor: pointer;
+}
+
+.menu a{
+	text-decoration: none;	
+}
+
+.menu_list.order{
+	margin-top: 10px;
+	background: #073BF1;
+	color: white;
 }
 
 .clearfix {

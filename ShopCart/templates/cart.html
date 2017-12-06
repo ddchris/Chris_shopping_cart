@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+.order {
+    margin-top: 5px;
+    width: 100%;
+    vertical-align: middle;
+}
+
+	.order th, .order td {
+	    border: 3px solid #283D6F;
+	    padding-top: 15px;
+	    padding-left: 40px;
+	    padding-right: 40px;
+	    padding-bottom: 15px;
+	    background: #000000;
+	    border-radius: 10px;
+	    text-align: center;
+	    color: #ffffff;
+	    font-size: 35px;
+	}
+
+	.order th {
+	    background: #4fdc04;
+	    color: #000000;
+	    font-weight: bold;
+	}
+
+	#go_back{
+		background: #C2BD33;
+	}
+
+	#go_back:hover{
+		background: #9F9B3A;
+	}	
+
+	tr imh{
+		width: 60px;
+		height: 60px;
+	}
+
+	th img{
+		width: 50px;
+		height: 50px;
+	}
+
+	tr a, th a{
+		display: block;
+		text-decoration: none;
+		width: 100%;
+		height: 100%;
+	}
+
+
+</style>
+
+	<table class="order">
+		<tr>
+			<th>商品圖片</th>
+			<th>商品名稱</th>
+			<th>購買數量</th>
+			<th>單價</th>
+			<th>小計</th>
+			<th>刪除品項</th>
+		</tr>
+
+        {% for item in cart %}
+        <tr>
+			<td> <img src="/static/imgs/{{ item.product.p_imgs }}" /></td>
+            <td>{{ item.product.p_name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.product.p_price}}</td>
+            <td>{{ item.total_price }}</td>
+			<td> <a href="{% url 'removeitem-url' item.product.id %}"> <img src="/static/imgs/not_ok.png" /> </a></td>
+        </tr>
+        {% endfor %}
+
+		<tr>
+			<th id="go_back"><a href="\index\"> <img src="/static/imgs/go_back.png" /> 回上頁</a></th>
+			<th >商品總數: </th>
+			<th >{{cart.count}}</th>
+			<th >合計:</th>
+			<th >{{cart.summary}}</th>
+			<th ></th>			
+		</tr>
+
+    </table>
+
+
+{% endblock %}

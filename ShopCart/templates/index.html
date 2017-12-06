@@ -6,12 +6,29 @@
 <!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  -->
 
-<div class="content">
+<div class="menu">
+	<h2>商品目錄</h2>
+    <ul>
+    	<li class="menu_list stationery">文具</li>
+    	<li class="menu_list food">食物</li>
+    	<li class="menu_list necessity">生活用品</li>
+    	<li class="menu_list computer">3C產品</li>
+    </ul>
+	<h2>購物資訊</h2>
+    <ul>
+    	<a href="/cart/">
+    		<li class="menu_list order">我的購物清單</li>
+    	</a>
+    </ul>
+
+
+</div>
+<div class="content food">
     <div class="productList">
         <ul>
             {% for food in foods%}
             {% if food.p_onsale == True %}
-			<a href="#" class="product_link">
+			<div class="product_link">
 	            <li class="food{{food.id}}">
 	                <div class="status">
 	                    特價中!
@@ -19,31 +36,97 @@
 	                    <img src="/static/imgs/{{food.p_imgs}}" />
 	                <div class="product_name"> {{food.p_name}} </div>
 	                <span> ${{food.p_price}} </span>
+ 
+            		<button class="btn add_to_cart" id="{{food.id}}">加入購物車 </button>
+
+
 	            </li>
-            </a>
+            </div>
 
             {% elif food.p_newproduct == True %}
 
-			<a href="#" class="product_link">
+			<div class="product_link">
 	            <li class="food{{food.id}}">
-	                <div class="status">
+	                <div class="status" class="btn add_to_cart">
 	                    新登場!
 	                </div>
 	                    <img src="/static/imgs/{{food.p_imgs}}" />
 	                <div class="product_name">{{food.p_name}}</div>
 	                <span>${{food.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{food.id}}">加入購物車 </button>
+
 	            </li>
-            </a>
+            </div>
 
             {% else %}
 
-            <a href="#" class="product_link ">
+            <div class="product_link ">
 	            <li class="food{{food.id}}">
 	                <img src="/static/imgs/{{food.p_imgs}}" />
 	                <div class="product_name">{{food.p_name}}</div>
 	                <span>${{food.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{food.id}}">加入購物車 </button>
+
 	            </li>
-            </a>
+            </div>
+            {% endif %}
+            {% empty %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- #################   分頁    ################  -->
+<div class="content stationery">
+    <div class="productList">
+        <ul>
+            {% for stationery in stationeries%}
+            {% if stationery.p_onsale == True %}
+			<div class="product_link">
+	            <li class="food{{stationery.id}}">
+	                <div class="status">
+	                    特價中!
+	                </div>
+	                    <img src="/static/imgs/{{stationery.p_imgs}}" />
+	                <div class="product_name"> {{stationery.p_name}} </div>
+	                <span> ${{stationery.p_price}} </span>
+
+            		<button class="btn add_to_cart" id="{{stationery.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% elif stationery.p_newproduct == True %}
+
+			<div class="product_link">
+	            <li class="food{{stationery.id}}">
+	                <div class="status" class="btn add_to_cart">
+	                    新登場!
+	                </div>
+	                    <img src="/static/imgs/{{stationery.p_imgs}}" />
+	                <div class="product_name">{{stationery.p_name}}</div>
+	                <span>${{stationery.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{stationery.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% else %}
+
+            <div class="product_link ">
+	            <li class="food{{stationery.id}}">
+	                <img src="/static/imgs/{{stationery.p_imgs}}" />
+	                <div class="product_name">{{stationery.p_name}}</div>
+	                <span>${{stationery.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{stationery.id}}">加入購物車 </button>
+
+	            </li>
+            </div>
             {% endif %}
             {% empty %}
             {% endfor %}
@@ -51,11 +134,138 @@
     </div>
 </div>
 
-<script src="{% static 'js/index.js' %}"></script>
-<script>
-	$(".product_link").mouseenter(function() {
-    $('.food{{food.id}}').addClass('animated infinite shake');
-});
+<!-- #################   分頁    ################  -->
 
-</script>
+<div class="content computer">
+    <div class="productList">
+        <ul>
+            {% for computer in computers%}
+            {% if computer.p_onsale == True %}
+			<div class="product_link">
+	            <li class="food{{computer.id}}">
+	                <div class="status">
+	                    特價中!
+	                </div>
+	                    <img src="/static/imgs/{{computer.p_imgs}}" />
+	                <div class="product_name"> {{computer.p_name}} </div>
+	                <span> ${{computer.p_price}} </span>
+
+            		<button class="btn add_to_cart" id="{{computer.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% elif computer.p_newproduct == True %}
+
+			<div class="product_link">
+	            <li class="food{{computer.id}}">
+	                <div class="status" class="btn add_to_cart">
+	                    新登場!
+	                </div>
+	                    <img src="/static/imgs/{{computer.p_imgs}}" />
+	                <div class="product_name">{{computer.p_name}}</div>
+	                <span>${{computer.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{computer.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% else %}
+
+            <div class="product_link ">
+	            <li class="food{{computer.id}}">
+	                <img src="/static/imgs/{{computer.p_imgs}}" />
+	                <div class="product_name">{{computer.p_name}}</div>
+	                <span>${{computer.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{computer.id}}">加入購物車 </button>
+
+	            </li>
+            </div>
+            {% endif %}
+            {% empty %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- #################   分頁    ################  -->
+
+
+<div class="content necessity">
+    <div class="productList">
+        <ul>
+            {% for necessity in necessities%}
+            {% if necessity.p_onsale == True %}
+			<div class="product_link">
+	            <li class="food{{necessity.id}}">
+	                <div class="status">
+	                    特價中!
+	                </div>
+	                    <img src="/static/imgs/{{necessity.p_imgs}}" />
+	                <div class="product_name"> {{necessity.p_name}} </div>
+	                <span> ${{necessity.p_price}} </span>
+
+            		<button class="btn add_to_cart" id="{{necessity.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% elif necessity.p_newproduct == True %}
+
+			<div class="product_link">
+	            <li class="food{{necessity.id}}">
+	                <div class="status" class="btn add_to_cart">
+	                    新登場!
+	                </div>
+	                    <img src="/static/imgs/{{necessity.p_imgs}}" />
+	                <div class="product_name">{{necessity.p_name}}</div>
+	                <span>${{necessity.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{necessity.id}}">加入購物車 </button>
+
+
+	            </li>
+            </div>
+
+            {% else %}
+
+            <div class="product_link ">
+	            <li class="food{{necessity.id}}">
+	                <img src="/static/imgs/{{necessity.p_imgs}}" />
+	                <div class="product_name">{{necessity.p_name}}</div>
+	                <span>${{necessity.p_price}}</span>
+
+            		<button class="btn add_to_cart" id="{{necessity.id}}">加入購物車 </button>
+
+	            </li>
+            </div>
+            {% endif %}
+            {% empty %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<!-- #################   分頁    ################  -->
+
+
+<form class="signup" id="signup_form" method="post" action="/accounts/signup/">
+  <input type="hidden" name="csrfmiddlewaretoken" value="g3INHntupegaTt87XNoucJrfGjKBrrYY0UbfZtmtUSpB7JkGrC0DYwMnNnA7fNMF">
+  <p><label for="id_username">使用者名稱：</label> <input type="text" name="username" placeholder="使用者名稱" maxlength="150" minlength="1" autofocus="autofocus" required="" id="id_username"></p>
+<p><label for="id_email">E-mail (可不填)：</label> <input type="email" name="email" placeholder="電子郵件地址" id="id_email"></p>
+<p><label for="id_password1">密碼：</label> <input type="password" name="password1" placeholder="密碼" required="" id="id_password1"></p>
+<p><label for="id_password2">密碼(重複)：</label> <input type="password" name="password2" placeholder="密碼(重複)" required="" id="id_password2"></p>
+  
+  <button type="submit">註冊 »</button>
+</form>
+
+<!-- #################   分頁    ################  -->
+
+
+<script src="{% static 'js/index.js' %}"></script>
+
 {% endblock content %}

@@ -42,10 +42,12 @@
 
 <body>
         <div class="signinBox" id="signinBox">
-        	<a href="#" class="signinBox-close"> × </a>
+        	<a href="#" id="signinBox_close"> × </a>
 			<div class="signinBox_header"> 加入美食商城會員！</div>
 
-    		<form action="/signin/" method="POST" name="signin_form">
+			<form class="signup" id="signup_form" method="POST" action="/accounts/signup/">
+			<input type="hidden" name="csrfmiddlewaretoken" value="g3INHntupegaTt87XNoucJrfGjKBrrYY0UbfZtmtUSpB7JkGrC0DYwMnNnA7fNMF">
+    		<!-- <form action="/signin/" method="POST" name="signin_form"> -->
                 {% csrf_token %}
                 <div>
 					<label for="signin_account"><span>&nbsp&nbsp帳號:</span></label>
@@ -74,7 +76,7 @@
                 </div>
                 <div>
 					<label for="password"><span>&nbsp&nbsp密碼:</span></label>
-					<input type="password" name="password" size="10px" placeholder="請輸入您的密碼" id="password">
+					<input type="password" name="password" size="10px" placeholder="請輸入您的密碼" id="signin_password">
                 </div>
                 <div>
 					<label for="check_password"><span>&nbsp&nbsp確認:</span></label>
@@ -93,12 +95,12 @@
 	                <input type="radio" name="user_gender" class="gender" value="M"><b>Male</b>
 	                <input type="radio" name="user_gender" class="gender" value="F"><b>Female</b>
                 </span>
-				<input type="submit" value="送出資料!" id="loginbox_submit">
+				<input type="submit" value="送出資料!" id="signinbox_submit">
     		</form>
 		</div>
 
         <div id="loginbox">
-        	<a href="#" class="loginbox-close"> × </a>
+        	<a href="#" id="loginbox_close"> × </a>
 			<div class="loginbox_header"> 登入您的美食商城帳戶！</div>
         	<div class="fb_login">
 				<a title="Facebook" class="socialaccount_provider facebook" href="/accounts/facebook/login/?process=login">
@@ -127,11 +129,23 @@
     		</form>
 		</div>
 
+  <!--   ####################   主頁面開始   ##################              -->
 		<div class="wrap">
 			<div class="top_bar">
     		<h1 class="animated infinite pulse">Chris2012's 美食購物商城</h1>
 
-    		{% if user.is_authenticated %}
+			{% if status == "login" %}
+
+			<a href="/logout/">
+				<button type="submit" id="logout">
+					登出
+    				<span id="quantity_login">{{cart.count}}</span>
+				</button>
+			</a>
+				<img id="login_cartlogo" src="{% static 'imgs/cart_logo2.png' %}">
+				
+    		{% elif user.is_authenticated %}
+
 		    <span>{{user.socialaccount_set.all.0.extra_data.name}} 您好~ </span>
     		<img src="{{user.socialaccount_set.all.0.get_avatar_url}}" alt="" id="social_img">
 			<form method="POST" action="{% url 'account_logout' %}">
@@ -139,64 +153,54 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                 {% endif %}
-					<button type="submit" id="logout">登出</button>
+					<button type="submit" id="logout">
+						登出
+	    				<span id="quantity_social_login">{{cart.count}}</span>
+					</button>
 			</form>
-			<img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo" id="after_cartlogo">
 
-			{% elif status == "login" %}
-			<a href="/logout/">
-				<button type="submit" id="logout">登出</button>
-			</a>
-			<img src="{% static 'imgs/cart_logo2.png' %}">
+			<img src="{% static 'imgs/cart_logo2.png' %}" alt="" id="after_cartlogo">
+
         	{% else %}
 
-			<img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo" id="original_cartlogo">
-			<button id="signin">註冊</button>
-			<button id="login_submit">登入</button>
+			<div id="cart_frame">
+				<img src="{% static 'imgs/cart_logo2.png' %}" alt="cart_logo" id="original_cartlogo">
+	    		<span id="quantity_be4_login">{{cart.count}}</span>
+			</div>
+			<button id="signinbox_open">註冊</button>
+			<button id="loginbox_open">登入</button>
+
     		</ul>
        	    {% endif %}
     		</div>
 	        <div class="header">
-	        <div class="slider-wrapper theme-default">
-		        <div id="slider" class="nivoSlider">
-		            <img src="../static/imgs/bg4.jpg" />
-		            <img src="../static/imgs/bg5.jpg" />
-		            <img src="../static/imgs/bg6.jpg" />
-		            <img src="../static/imgs/bg5.jpg" />
+		        <div class="slider-wrapper theme-default">
+			        <div id="slider" class="nivoSlider">
+			            <img src="../static/imgs/bg4.jpg" />
+			            <img src="../static/imgs/bg5.jpg" />
+			            <img src="../static/imgs/bg6.jpg" />
+			            <img src="../static/imgs/bg5.jpg" />
+			        </div>
 		        </div>
 	        </div>
-	        </div>
 	        <div class="main">
-	            <div class="menu">
-	            	<h2>商品目錄</h2>
-	                <ul>
-	                	<li class="menu_list">前菜</li>
-	                	<li class="menu_list">主餐</li>
-	                	<li class="menu_list">甜點</li>
-	                	<li class="menu_list">果汁</li>
-	                	<li class="menu_list">茶飲</li>
-	                	<li class="menu_list">湯品</li>
-	                </ul>
-	            </div>
 	            {% block content %}
 	            {% endblock content %}
 	        </div>
 	        <div class="clearfix"></div>
 	        <div class="footer">
-	        	<h2>{{message}}</h2>
-	        	<h2>{{message2}}</h2>
+
 	        </div>
    		</div>
 </body>
 
-	<script id="allauth-facebook-settings" type="application/json">
-	{"loginByTokenUrl": "http://chris2012.pythonanywhere.com/accounts/facebook/login/token/", "errorUrl": "http://chris2012.pythonanywhere.com/accounts/social/login/error/", "appId": "1141743615960050", "initParams": {"version": "v2.5", "appId": "1141743615960050"}, "cancelUrl": "http://chris2012.pythonanywhere.com/accounts/social/login/cancelled/", "loginOptions": {"scope": ""}, "loginUrl": "http://chris2012.pythonanywhere.com/accounts/facebook/login/", "locale": "zh_CN", "version": "v2.5", "csrfToken": "OcF7rLigmpctmJpuRHeJRLWjKkUWivXi", "logoutUrl": "http://chris2012.pythonanywhere.com/accounts/logout/"}
-	</script>
 	<script type="text/javascript" src="{% static 'js/fbconnect.js' %}" > </script>
 	<script src="{% static 'js/completer.js' %}"></script>
 	<script src="{% static 'js/base.js' %}"></script>
-
-
+	
+	<script id="allauth-facebook-settings" type="application/json">
+	{"loginByTokenUrl": "http://chris2012.pythonanywhere.com/accounts/facebook/login/token/", "errorUrl": "http://chris2012.pythonanywhere.com/accounts/social/login/error/", "appId": "1141743615960050", "initParams": {"version": "v2.5", "appId": "1141743615960050"}, "cancelUrl": "http://chris2012.pythonanywhere.com/accounts/social/login/cancelled/", "loginOptions": {"scope": ""}, "loginUrl": "http://chris2012.pythonanywhere.com/accounts/facebook/login/", "locale": "zh_CN", "version": "v2.5", "csrfToken": "OcF7rLigmpctmJpuRHeJRLWjKkUWivXi", "logoutUrl": "http://chris2012.pythonanywhere.com/accounts/logout/"}
+	</script>
 	<script type="text/javascript" src="{% static 'js/jquery.nivo.slider.js' %}" > </script>
 	 <script type="text/javascript">
 		$('#slider').nivoSlider({

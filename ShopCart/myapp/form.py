@@ -10,5 +10,5 @@ class UserModel (forms.Form):
     signin_email = forms.EmailField (required = True)
     check_password = forms.CharField ( min_length = 5, max_length = 12 )
     user_gender = forms.CharField (max_length =2)
-
+ 
  
